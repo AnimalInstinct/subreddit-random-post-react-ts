@@ -7,11 +7,12 @@ import { withRootState } from '../../store'
 type PostProps = {
   title: string
   liked: boolean
+  permalink: string
 }
 
 export const Post: React.FunctionComponent<PostProps> = withRootState(
   ({ posts }) => ({ posts: posts.posts }),
-  ({ title, liked, dispatch }) => {
+  ({ title, liked, permalink, dispatch }) => {
     const deleteHandler = (title: string) => {
       dispatch({ type: 'DELETE_POST', title })
     }
@@ -38,7 +39,14 @@ export const Post: React.FunctionComponent<PostProps> = withRootState(
             />
           </div>
         </div>
-        <div className={style.title}>{title}</div>
+        <div
+          onClick={() =>
+            window.open(`https://reddit.com/${permalink}`, '_blank')
+          }
+          className={style.title}
+        >
+          {title}
+        </div>
       </div>
     )
   }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Subreddit } from './Subreddit'
-import styles from './subreddits.module.scss'
 import { withRootState } from '../../store'
+import styles from './subreddits.module.scss'
 
 export const Subreddits = withRootState(
   ({ posts }) => ({

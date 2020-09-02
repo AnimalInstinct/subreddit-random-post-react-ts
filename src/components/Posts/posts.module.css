@@ -23,6 +23,7 @@
 
 .post .title {
   font-size: 1.1em;
+  cursor: pointer;
 }
 
 .post .controls .icon {

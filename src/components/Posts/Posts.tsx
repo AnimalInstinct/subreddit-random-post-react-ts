@@ -11,7 +11,12 @@ export const Posts = withRootState(
     return posts.length > 0 ? (
       <div className={style.posts}>
         {posts.map(post => (
-          <Post key={post.title} title={post.title} liked={post.liked} />
+          <Post
+            permalink={post.permalink}
+            key={post.title}
+            title={post.title}
+            liked={post.liked}
+          />
         ))}
       </div>
     ) : null
