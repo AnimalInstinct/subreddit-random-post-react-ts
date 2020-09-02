@@ -9,7 +9,9 @@ export const Posts = withRootState(
     return (
       <div className="posts">
         {posts.map(post => (
-          <div className="post">{post.title}</div>
+          <div key={post.title} className="post">
+            {post.title}
+          </div>
         ))}
       </div>
     )

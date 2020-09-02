@@ -7,24 +7,13 @@ export const Subreddits = withRootState(
   ({ posts }) => ({
     posts: posts.posts,
   }),
-  ({ dispatch, posts }) => {
-    const clickHandler = (subreddit: string) => {
-      dispatch({ type: 'ADD_POST', subreddit })
-    }
+  () => {
     return (
       <div className={styles.subreddits}>
-        <div onClick={() => clickHandler('frontend')}>
-          <Subreddit title={'Frontend'} />
-        </div>
-        <div onClick={() => clickHandler('frontend')}>
-          <Subreddit title={'ReactJs'} />
-        </div>
-        <div onClick={() => clickHandler('frontend')}>
-          <Subreddit title={'VueJs'} />
-        </div>
-        <div onClick={() => clickHandler('frontend')}>
-          <Subreddit title={'Angular'} />
-        </div>
+        <Subreddit subreddit={'frontend'} title={'Frontend'} />
+        <Subreddit subreddit={'reactjs'} title={'ReactJs'} />
+        <Subreddit subreddit={'vuejs'} title={'VueJs'} />
+        <Subreddit subreddit={'angular'} title={'Angular'} />
       </div>
     )
   }
