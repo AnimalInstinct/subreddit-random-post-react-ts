@@ -19,9 +19,28 @@ handle('ADD_POST', state => {
 })
 
 handle('POST_ADDED', (state, action) => {
-  const posts = [...state.posts, action.post] as Post[]
+  const posts = [...state.posts, action.post]
   return {
     ...state,
-    posts: posts,
+    posts,
   }
+})
+
+handle('DELETE_POST', (state, action) => {
+  const posts = state.posts.filter(item => item.title !== action.title)
+  return { ...state, posts }
+})
+
+handle('LIKE_POST', (state, action) => {
+  const posts = state.posts.map(post => {
+    if (post.title !== action.title) {
+      return post
+    }
+    post.liked = !post.liked
+    return {
+      ...post,
+      ...action,
+    }
+  })
+  return { ...state, posts }
 })

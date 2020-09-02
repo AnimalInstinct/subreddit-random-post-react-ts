@@ -1,0 +1,36 @@
+.posts {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid gray;
+  padding: 1em;
+  margin: 0 1em;
+  border-radius: 5px;
+}
+
+.post {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  align-items: center;
+  border-bottom: 1px solid grey;
+  padding: 10px;
+}
+
+.post .controls {
+  display: flex;
+  flex-direction: row;
+}
+
+.post .title {
+  font-size: 1.1em;
+}
+
+.post .controls .icon {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid grey;
+  border-radius: 5px;
+}

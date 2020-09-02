@@ -10,4 +10,14 @@ export type PostAdded = {
   post: Post
 }
 
-export type PostsAction = AddPost | PostAdded
+export type DeletePost = {
+  type: 'DELETE_POST'
+  title: string
+}
+
+export type LikePost = {
+  type: 'LIKE_POST'
+  title: string
+}
+
+export type PostsAction = AddPost | PostAdded | DeletePost | LikePost

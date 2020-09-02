@@ -1,19 +1,19 @@
 import React from 'react'
 import { withRootState } from '../../store'
+import { Post } from './Post'
+import style from './posts.module.css'
 
 export const Posts = withRootState(
   ({ posts }) => ({
     posts: posts.posts,
   }),
   ({ dispatch, posts }) => {
-    return (
-      <div className="posts">
+    return posts.length > 0 ? (
+      <div className={style.posts}>
         {posts.map(post => (
-          <div key={post.title} className="post">
-            {post.title}
-          </div>
+          <Post key={post.title} title={post.title} liked={post.liked} />
         ))}
       </div>
-    )
+    ) : null
   }
 )
