@@ -1,7 +1,7 @@
 import { PostsAction } from './action'
 import { Post } from './types'
 import { createReducer } from '../create'
-import { loadState } from '../lib/localStorage'
+import { loadState, saveState } from '../lib/localStorage'
 
 export interface PostsState {
   posts: Post[]
@@ -9,8 +9,22 @@ export interface PostsState {
 
 const persistedState = loadState()
 
+const checkCache = () => {
+  let posts: Post[] = persistedState.posts
+  let passedPosts: Post[] = []
+  posts.map(post => {
+    let diff = (new Date(post.cached).getTime() - new Date().getTime()) / 1000
+    const diffInMin = Math.abs(Math.round((diff /= 60)))
+    if (diffInMin < 2) {
+      passedPosts.push(post)
+    }
+  })
+  saveState({ posts: passedPosts })
+  return passedPosts
+}
+
 const initState: PostsState = {
-  posts: persistedState ? persistedState.posts : [],
+  posts: persistedState ? checkCache() : [],
 }
 
 const { handle, reducer } = createReducer<PostsAction, PostsState>(initState)

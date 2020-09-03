@@ -14,3 +14,4 @@ npm start
 ### Features
 
 - Persistent state without dependencies
+- Posts cached for 2 minutes, expired posts remove from persistentState
