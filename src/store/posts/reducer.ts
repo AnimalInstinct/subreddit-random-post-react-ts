@@ -10,7 +10,7 @@ export interface PostsState {
 const persistedState = loadState()
 
 const initState: PostsState = {
-  posts: persistedState.posts,
+  posts: persistedState ? persistedState.posts : [],
 }
 
 const { handle, reducer } = createReducer<PostsAction, PostsState>(initState)
