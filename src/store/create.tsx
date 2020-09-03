@@ -3,6 +3,7 @@ import { Saga, RootAction, RootState, Dispatch } from './types'
 import { createStore as createRedux, applyMiddleware } from 'redux'
 import { connect, Provider } from 'react-redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import { saveState } from './lib/localStorage'
 
 type Act = { type: string }
 
@@ -78,6 +79,7 @@ export function createReducer<TAction extends Act, TState>(
     if (!handler) return state
     if (typeof handler === 'function') {
       const nextState = handler(state, action) || state
+      saveState(nextState)
       return { ...state, ...nextState }
     }
     return { ...state, ...handler }
@@ -103,7 +105,6 @@ export function createSaga<
       await handler(action, dispatch, state)
       return
     }
-
     await handler(action, dispatch)
   }
 

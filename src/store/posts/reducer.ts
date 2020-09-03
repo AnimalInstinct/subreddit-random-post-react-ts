@@ -1,13 +1,16 @@
 import { PostsAction } from './action'
 import { Post } from './types'
 import { createReducer } from '../create'
+import { loadState } from '../lib/localStorage'
 
 export interface PostsState {
   posts: Post[]
 }
 
+const persistedState = loadState()
+
 const initState: PostsState = {
-  posts: [],
+  posts: persistedState.posts,
 }
 
 const { handle, reducer } = createReducer<PostsAction, PostsState>(initState)
