@@ -13,7 +13,6 @@ export function* saga(): RootMiddleware {
         } = await api.getPosts(action.subreddit)
         const { data } = children[random(dist - 1)]
         const post = data
-        console.log(post)
         post.liked = false
         return dispatch({ type: 'POST_ADDED', post })
       }

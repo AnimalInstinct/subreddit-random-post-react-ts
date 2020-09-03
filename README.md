@@ -10,3 +10,7 @@ cd subreddit-random-post-react-ts
 npm install
 npm start
 ```
+
+### Features
+
+- Persistent state without dependencies
