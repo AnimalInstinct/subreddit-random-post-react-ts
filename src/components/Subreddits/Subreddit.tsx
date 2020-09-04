@@ -1,6 +1,8 @@
 import React from 'react'
-import styles from './subreddits.module.scss'
+import styles from './subreddits.module.css'
 import { withRootState } from '../../store'
+import useWindowDimensions from './hooks/useWindowDimensions'
+import { SubredditAnimated } from './lib/animations'
 
 type SubredditProps = {
   title: string
@@ -13,10 +15,15 @@ export const Subreddit: React.FunctionComponent<SubredditProps> = withRootState(
     const clickHandler = (subreddit: string) => {
       dispatch({ type: 'ADD_POST', subreddit })
     }
+    const window = useWindowDimensions()
     return (
-      <div onClick={() => clickHandler(subreddit)} className={styles.subreddit}>
+      <SubredditAnimated
+        onClick={() => clickHandler(subreddit)}
+        className={styles.subreddit}
+        distance={window.width}
+      >
         <div className={styles.title}>{title}</div>
-      </div>
+      </SubredditAnimated>
     )
   }
 )

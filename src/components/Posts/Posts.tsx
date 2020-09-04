@@ -12,6 +12,7 @@ export const Posts = withRootState(
       <div className={style.posts}>
         {posts.map(post => (
           <Post
+            subreddit={post.subreddit}
             permalink={post.permalink}
             key={post.title}
             title={post.title}

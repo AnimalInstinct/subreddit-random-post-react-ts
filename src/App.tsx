@@ -1,15 +1,14 @@
-import React, { Fragment } from 'react'
-import './App.css'
+import React from 'react'
 
 import { Subreddits } from './components/Subreddits'
 import { Posts } from './components/Posts'
 
 function App() {
   return (
-    <Fragment>
+    <div className="app">
       <Subreddits />
       <Posts />
-    </Fragment>
+    </div>
   )
 }
 
