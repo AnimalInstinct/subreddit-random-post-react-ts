@@ -3,7 +3,6 @@ import { PostsAction } from './action'
 import * as api from '../../api'
 import { random } from 'lodash'
 import { Post } from './types'
-import { loadState } from '../lib/localStorage'
 
 export function* saga(): RootMiddleware {
   yield ({ dispatch }) => next => async (action: PostsAction) => {

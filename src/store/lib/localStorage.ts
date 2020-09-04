@@ -1,5 +1,3 @@
-import { Post } from '../posts'
-
 export const loadState = () => {
   // We need the try block because user may not permit our accessing localStorage.
   try {

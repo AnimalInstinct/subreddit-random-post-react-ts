@@ -1,8 +1,9 @@
 .posts {
+  background-color: white;
   display: flex;
   flex-direction: column;
   border: 1px solid gray;
-  padding: 1em;
+  padding: 1em 2em;
   margin: 0 1em;
   border-radius: 5px;
 }
@@ -10,10 +11,13 @@
 .post {
   display: flex;
   flex-direction: row;
-  height: 50px;
   align-items: center;
   border-bottom: 1px solid grey;
   padding: 10px;
+}
+
+.post:last-child {
+  border-bottom: none;
 }
 
 .post .controls {

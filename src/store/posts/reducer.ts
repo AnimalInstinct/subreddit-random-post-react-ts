@@ -9,7 +9,7 @@ export interface PostsState {
 
 const persistedState = loadState()
 
-const checkCache = () => {
+function checkCache() {
   let posts: Post[] = persistedState.posts
   let passedPosts: Post[] = []
   posts.map(post => {
@@ -18,6 +18,7 @@ const checkCache = () => {
     if (diffInMin < 2) {
       passedPosts.push(post)
     }
+    return null
   })
   saveState({ posts: passedPosts })
   return passedPosts
@@ -36,10 +37,17 @@ handle('ADD_POST', state => {
 })
 
 handle('POST_ADDED', (state, action) => {
-  const posts = [...state.posts, action.post]
-  return {
-    ...state,
-    posts,
+  const oldState = { ...state }
+  let posts = oldState.posts as Post[]
+  const double = posts.find(item => item.title === action.post.title)
+  if (!double) {
+    const newPosts = [...state.posts, action.post]
+    return {
+      ...state,
+      posts: newPosts,
+    }
+  } else {
+    return state
   }
 })
 
