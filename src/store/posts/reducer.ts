@@ -9,6 +9,7 @@ export interface PostsState {
 
 const persistedState = loadState()
 
+// If cache older than 2 min remove post from state
 function checkCache() {
   let posts: Post[] = persistedState.posts
   let passedPosts: Post[] = []
