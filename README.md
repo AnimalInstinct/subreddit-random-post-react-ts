@@ -2,7 +2,7 @@
 
 App shows random post from Reddit API, used Redux and Saga for global state and side effects.
 
-[Demo:](https://subreddit-random-post-react.web.app/)
+[Demo](https://subreddit-random-post-react.web.app/)
 
 ## Installation and running in dev mode
 
